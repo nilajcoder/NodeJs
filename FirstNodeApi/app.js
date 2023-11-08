@@ -12,3 +12,23 @@ app.listen(port, () => {
     
     response.send(status);
  });
+
+ /*
+ post method
+ */
+ app.post("/signup", (request, response) => {
+ 
+   const { username, password } = request.body;
+   
+
+   response.json({ message: "Signup successful" });
+});
+
+/*
+get the data in json format
+*/
+app.get("/signup", (request, response) => {
+ 
+   const jsondata = request.body;
+   response.send({ jsondata });
+});

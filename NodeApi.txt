@@ -1,0 +1,100 @@
+Download and Install Node.js and NPM(Node Package Manger)
+https://nodejs.org/en
+
+Download and Install Postman
+https://www.postman.com/downloads/
+
+
+
+node -v  - Checks the Node version
+npm -v   -  Checks the npm version 
+Create a folder in the desktop or any other location
+open with vscode
+then open terminal
+type 
+1.npm init
+enter enter so on as default
+
+2.npm install express
+
+app.js
+--------
+
+const express = require('express');
+const app = express ();
+app.use(express.json());
+const port = 3000; 
+app.listen(port, () => {
+    console.log("Server Listening on PORT:", port);
+  });
+
+/*
+get method
+*/
+  app.get("/status", (request, response) => {
+    const status = {
+       "Status": "Running"
+    };
+    
+    response.send(status);
+ });
+
+/*
+ post method
+ */
+ app.post("/signup", (request, response) => {
+ 
+   const { username, password } = request.body;
+   
+
+   response.json({ message: "Signup successful" });
+});
+
+/*
+get the data in json format
+*/
+app.get("/signup", (request, response) => {
+ 
+   const jsondata = request.body;
+   
+
+   response.send({ jsondata });
+});
+ config.js
+-----------------
+const PORT = process.env.PORT || 3000;
+index.js
+-----------
+console.log("Demo");
+
+package.json
+---------------
+{
+  "name": "node-js",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start" : "node index.js"
+ 
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2"
+
+    
+  }
+
+  
+}
+run the api by node app.js
+PS C:\Users\PC\Desktop\node js> node app.js
+Server Listening on PORT: 3000
+then go to postman
+
+type GET localhost:30000/status
+     POST localhost:30000/signup
+     GET localhost:3000/singnup

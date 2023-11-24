@@ -1,0 +1,148 @@
+
+Model
+----------
+const mongoose=require('mongoose' );
+const {Schema}=mongoose;
+
+const studymaterialsmodel=new Schema({
+    contentTitle:{type: String},
+    contentType:{type:String},//dropdown
+    subjectType:{type:String},//dropdown
+    availableFor:{type:String},
+    classId:{type:String},//dropdown
+    batchId:{type:String},
+    teachersId:{type:String}//dropdown
+
+})
+const studymaterialsdb=mongoose.model('studymaterials',studymaterialsmodel);
+module.exports=studymaterialsdb;
+
+
+controller
+-------------
+const mongoose = require('mongoose');
+const studydetails = require("../../../model/LMS/Contentcenter/studymaterialsmodel");
+
+//insert
+
+
+const insert = async (req, res) => {
+    const {
+        contentTitle,
+        contentType,
+        subjectType,
+        availableFor,
+        classId,
+        batchId,
+        teachersId
+
+    } = req.body;
+
+    try {
+        const newstudy= new studydetails({
+            contentTitle,
+            contentType,
+            subjectType,
+            availableFor,
+            classId,
+            batchId,
+            teachersId
+        });
+
+        await newstudy.save();
+        res.status(201).json("New Study material created");
+
+    } catch (error) {
+        res.status(500).json({ error: "failed to insert study data" });
+    }
+};
+
+//get all
+const GetAll = ( async (req, res) => {
+
+   
+    try {
+        const userdata = await studydetails.find();
+        res.status(201).json(userdata)
+        console.log(userdata);
+    } catch (error) {
+        res.status(422).json(error);
+    }
+})
+
+//get by id
+const GetById = async (req, res) => {
+    try {
+
+        const { id } = req.params;
+
+        const studyindividual = await studydetails.findById({ _id: id });
+
+        res.status(201).json(studyindividual)
+
+    } catch (error) {
+        res.status(422).json(error);
+    }
+
+}
+
+
+//update
+const Update = async (req, res) => {
+    try {
+        const { id } = req.params;
+
+        const newUpdate = await studydetails.findByIdAndUpdate(id, req.body, {
+            new: false
+        });
+
+        console.log(newUpdate);
+        res.status(201).json(newUpdate);
+
+
+    } catch (error) {
+        res.status(422).json(error);
+    }
+}
+
+//delete
+const Delete = async (req, res) => {
+    try {
+        const { id } = req.params;
+
+        const deleteItem = await studydetails.findByIdAndDelete(id, req.body, {
+            new: false
+        });
+
+        console.log(deleteItem);
+        res.status(201).json(deleteItem);
+
+
+    } catch (error) {
+        res.status(422).json(error);
+    }
+}
+
+module.exports = { insert ,GetAll,GetById,Update,Delete};
+
+
+
+route
+
+const express=require("express");
+const router=express.Router();
+const {insert, GetAll,GetById, Update, Delete}=require('../../../controller/LMS/Contentcenter/studymaterialscontroller');
+const UserAuth =require('../../../src/handeler/middleware');
+router.post("/",UserAuth,insert);
+router.get("/",UserAuth,GetAll);
+router.get("/:id",UserAuth,GetById);
+router.put("/:id",UserAuth,Update);
+router.delete("/:id",UserAuth,Delete);
+module.exports=router;
+
+index.js
+---------
+//user-one-Nilaj
+var studymaterialRoute = require("./routes/LMS/Contentcenter/studymaterialsrotes.js");
+//user one-nilaj
+app.use('/api/studymaterials',studymaterialRoute);

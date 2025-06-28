@@ -1,4 +1,11 @@
+## 🚀 Getting Started
 
+### 1. Initialize the Project in Node.js
+
+Before writing any code, initialize your project with:
+
+
+npm init
 # 🛠️ Node.js System Info & File Creator
 
 This simple Node.js project demonstrates how to use two powerful built-in core modules:

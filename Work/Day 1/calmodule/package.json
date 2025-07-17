@@ -1,0 +1,12 @@
+{
+  "name": "calmodule",
+  "version": "1.0.0",
+  "description": "calculator using module type",
+  "license": "ISC",
+  "author": "Nilaj",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}

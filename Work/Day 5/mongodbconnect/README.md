@@ -4,6 +4,21 @@ This is a basic starter project that demonstrates how to connect to MongoDB usin
 
 ---
 
+## ✅ What is Mongoose?
+
+Mongoose is an Object Data Modeling (ODM) library for MongoDB and Node.js.
+It helps developers interact with MongoDB using JavaScript objects instead of writing raw MongoDB queries.
+It provides a schema-based solution to define the structure of your data and offers powerful features like:
+
+1.Data validation
+
+2. Middleware (hooks)
+
+3. Query building
+
+4.Relationship modeling
+
+
 ## 🛠️ Features
 
 - Uses `mongoose` for MongoDB connection
@@ -98,6 +113,7 @@ MONGO_URL="mongodb+srv://<username>:<password>@cluster0.mongodb.net/?retryWrites
 mongoose.connect(process.env.MONGO_URL);
 ✅ Done!
 You’re now connected to MongoDB Atlas via Compass and your application.
+
 
 
 

@@ -21,3 +21,5 @@
 6. Run the server on port 4000 and display a console log message when the server is started.
 
 7. Display "Connected to MongoDB" in the console once the database connection is successful.
+
+8.  Create an Express API  with a single route that returns the current server time in JSON format

@@ -9,8 +9,14 @@ const PORT = 4000;
 connectDB()
 
 
-app.get("/status", (req, res) => {  // /s
+app.get("/status", (req, res) => {  // 
   res.send("Server running ");
+});
+
+// Route to return current server time
+app.get("/time", (req, res) => {
+  const currentTime = new Date().toISOString(); // ISO string format
+  res.json({ serverTime: currentTime });
 });
 
 app.listen(PORT, () => {

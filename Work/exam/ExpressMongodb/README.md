@@ -23,3 +23,5 @@
 7. Display "Connected to MongoDB" in the console once the database connection is successful.
 
 8.  Create an Express API  with a single route that returns the current server time in JSON format
+
+9. Write code for a Node.js script* that reads the contents of a file and prints it on the console
